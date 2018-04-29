@@ -1,11 +1,11 @@
 package ml.wonwoo.springdatacommonexample.person;
 
-import java.util.List;
-
+import ml.wonwoo.springdatacommonexample.custom.CustomizedPersonRepository;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PersonRepository extends CrudRepository<Person, Long> {
+import java.util.List;
+
+public interface PersonRepository extends CrudRepository<Person, Long>, CustomizedPersonRepository {
 
     <T> List<T> findByName(String name, Class<T> clazz);
-
 }
