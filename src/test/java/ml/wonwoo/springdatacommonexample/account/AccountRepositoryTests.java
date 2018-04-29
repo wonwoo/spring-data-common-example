@@ -22,7 +22,6 @@ public class AccountRepositoryTests {
     @Autowired
     private AccountRepository accountRepository;
 
-
     @Test
     public void save() {
         Account account = accountRepository.save(new Account("wonwoo", "test@test.com"));
