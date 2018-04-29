@@ -28,7 +28,7 @@ public class PersonRepositoryTests {
     }
 
     @Test
-    public void personsClassProjectionsTest() {
+    public void personsClassDynamicProjectionsTest() {
         personRepository.save(new Person("wonwoo"));
         personRepository.save(new Person("wonwoo"));
         List<PersonDto> persons = personRepository.findByName("wonwoo", PersonDto.class);
@@ -37,6 +37,16 @@ public class PersonRepositoryTests {
 
     @Test
     public void personsInterfaceProjectionsTest() {
+        personRepository.save(new Person("wonwoo"));
+        personRepository.save(new Person("wonwoo"));
+        List<PersonDto> persons = personRepository.findByName("wonwoo");
+//        List<Named> persons = personRepository.findByName("wonwoo");
+        assertThat(persons).hasSize(2);
+        assertThat(persons.iterator().next().getName()).isEqualTo("wonwoo");
+    }
+
+    @Test
+    public void personsInterfaceDynamicProjectionsTest() {
         personRepository.save(new Person("wonwoo"));
         personRepository.save(new Person("wonwoo"));
         List<Named> persons = personRepository.findByName("wonwoo", Named.class);
